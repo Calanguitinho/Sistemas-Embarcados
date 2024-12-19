@@ -23,7 +23,7 @@ O repositório contém os seguintes itens:
 - Contém um vídeo demonstrativo que explica o funcionamento do circuito e detalha os componentes utilizados.
 
 ### 2. Código Fonte
-- **Local:** `./codigo_fonte`
+- **Local:** `Código Fonte`
 - Inclui o código utilizado para programar o Arduino Uno, implementando a lógica do circuito.
 
 ### 3. Relatório Técnico
