@@ -19,15 +19,12 @@ O objetivo principal do projeto é ilustrar o funcionamento conjunto de diferent
 O repositório contém os seguintes itens:
 
 ### 1. Vídeo Explicativo
-- **Local:** `./video_explicativo`
 - Contém um vídeo demonstrativo que explica o funcionamento do circuito e detalha os componentes utilizados.
 
 ### 2. Código Fonte
-- **Local:** `Código Fonte`
 - Inclui o código utilizado para programar o Arduino Uno, implementando a lógica do circuito.
 
 ### 3. Relatório Técnico
-- **Local:** `./relatorio_tecnico`
 - Um documento técnico explicando as funcionalidades do projeto, detalhando a conexão dos componentes, e os conceitos teóricos por trás do funcionamento do circuito.
 
 ---
