@@ -1,0 +1,47 @@
+// --- Definição dos Pinos ---
+const int analogPins[] = {A1, A2, A3, A4};
+const int digitalRelays[] = {7, 6, 5, 4};
+
+const int tempPin = A5; // Pino analógico único para leitura das temperaturas
+const float fatorDivisor = (15.0 + 3.0) / 3.0; 
+const float tensaoLimite = 15.0; 
+
+void setup() {
+  for (int i = 0; i < 4; i++) {
+    pinMode(digitalRelays[i], OUTPUT);
+    digitalWrite(digitalRelays[i], LOW);
+  }
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Verifica tensões e controla os relés
+  for (int i = 0; i < 4; i++) {
+    int leituraADC = analogRead(analogPins[i]);
+    float tensao = leituraADC * (5.0 / 1023.0) * fatorDivisor;
+
+    if (tensao > tensaoLimite) {
+      digitalWrite(digitalRelays[i], HIGH);
+      Serial.print("Relé "); Serial.print(i + 1); 
+      Serial.println(" ON");
+    } else {
+      digitalWrite(digitalRelays[i], LOW);
+    }
+  }
+
+  // Lê a temperatura em Celsius no pino A5 e exibe somente se o relé correspondente estiver ativo
+  for (int i = 0; i < 4; i++) {
+    if (digitalRead(digitalRelays[i]) == HIGH) { // Verifica se o relé está ativo
+      int leituraADC = analogRead(tempPin); // Lê a temperatura do pino A5
+      float tensaoTemp = leituraADC * (5.0 / 1023.0);
+
+      // Converte a tensão lida em temperatura em graus Celsius (ajuste a fórmula para o sensor usado)
+      float temperaturaCelsius = (tensaoTemp - 0.5) * 100.0;
+
+      Serial.print("Temp Sensor "); Serial.print(i + 1); 
+      Serial.print(": "); Serial.print(temperaturaCelsius);
+      Serial.println(" °C");
+    }
+  }
+  delay(500);
+}
